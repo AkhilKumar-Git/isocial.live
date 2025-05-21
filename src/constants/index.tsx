@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, LinkedInPostType, XPostType, InstagramPostType, PlatformConfig } from './types';
+import { Platform, LinkedInPostType, XPostType, InstagramPostType, PlatformConfig } from '../types';
 
 export const LinkedInIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
