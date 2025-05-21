@@ -1,15 +1,29 @@
 
-import React, { useState, useEffect, useCallback } from 'react';
-// FIX: Import LinkedInPostType and InstagramPostType for use in component logic
+'use client';
+
+import { useState, useEffect, useCallback, Suspense } from 'react';
+import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import { Platform, PostType, ContentInput, GeneratedContentWithMetadata, LinkedInPostType, InstagramPostType } from './types';
 import { PLATFORM_CONFIGS } from './constants';
+
+// Import the service directly since it doesn't need SSR
+import { generateSocialPost } from './services/geminiService';
+
+// Components
 import Header from './components/Header';
 import ContentInputForm from './components/ContentInputForm';
 import GeneratedPostDisplay from './components/GeneratedPostDisplay';
-import PostPreviewCard from './components/PostPreviewCard'; // New Import
+import PostPreviewCard from './components/PostPreviewCard';
 import ConnectAccountsModal from './components/ConnectAccountsModal';
-import { generateSocialPost } from './services/geminiService';
 import AnimatedBackgroundSwitcher from './components/backgrounds/AnimatedBackgroundSwitcher';
+
+// Loading component for suspense fallback
+const LoadingFallback = () => (
+  <div className="min-h-screen flex items-center justify-center">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+  </div>
+);
 
 const App: React.FC = () => {
   const [activePlatform, setActivePlatform] = useState<Platform>(Platform.LinkedIn);
