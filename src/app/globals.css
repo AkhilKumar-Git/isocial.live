@@ -2,24 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles can be added below */
-@layer base {
+:root {
+  --background-light: 255 255 255;
+  --background-dark: 0 0 0;
+  --foreground-light: 17 24 39;  /* gray-900 */
+  --foreground-dark: 249 250 251; /* gray-50 */
+}
+
+@media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
+    --background-light: 0 0 0;
+    --background-dark: 255 255 255;
+    --foreground-light: 249 250 251; /* gray-50 */
+    --foreground-dark: 17 24 39;   /* gray-900 */
   }
+}
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --foreground-rgb: 255, 255, 255;
-      --background-start-rgb: 0, 0, 0;
-      --background-end-rgb: 0, 0, 0;
-    }
-  }
-
+@layer base {
   body {
-    @apply min-h-screen bg-background text-foreground;
-    color: rgb(var(--foreground-rgb));
+    min-height: 100vh;
+    background-color: rgb(var(--background-light));
+    color: rgb(var(--foreground-light));
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: rgb(var(--background-dark));
+      color: rgb(var(--foreground-dark));
+    }
   }
 }
