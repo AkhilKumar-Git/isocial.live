@@ -2,12 +2,12 @@ import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { Platform, ContentInput, GeneratedContentWithMetadata, GroundingMetadata } from '../types';
 import { GEMINI_TEXT_MODEL } from '../constants';
 
-const API_KEY = process.env.API_KEY;
+const GEMINI_API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 
-if (!API_KEY) {
-  console.warn("API_KEY environment variable not set. Gemini API calls will fail.");
+if (!GEMINI_API_KEY) {
+  console.warn("GEMINI_API_KEY environment variable not set. Gemini API calls will fail.");
 }
-const ai = new GoogleGenAI({ apiKey: API_KEY || "MISSING_API_KEY" }); // Fallback to prevent crash if API_KEY is undefined during init
+const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY || "MISSING_API_KEY" }); // Fallback to prevent crash if API_KEY is undefined during init
 
 function parseGroundingMetadata(response: GenerateContentResponse): GroundingMetadata | undefined {
   if (response.candidates && response.candidates[0] && response.candidates[0].groundingMetadata) {
@@ -21,7 +21,7 @@ export const generateSocialPost = async (
   platform: Platform,
   inputs: ContentInput
 ): Promise<GeneratedContentWithMetadata> => {
-  if (!API_KEY) {
+  if (!GEMINI_API_KEY) {
     throw new Error("Gemini API key is not configured.");
   }
 
