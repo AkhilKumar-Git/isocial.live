@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, PostType, ContentInput, PlatformConfig } from '../types';
+import { PostType, ContentInput, PlatformConfig } from '../types';
 import LoadingSpinner from './LoadingSpinner';
 
 interface ContentInputFormProps {

@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const { code, state, error, error_reason } = req.query;
+    const { code, error, error_reason } = req.query;
     
     if (error) {
       console.error('Instagram OAuth error:', error, error_reason);

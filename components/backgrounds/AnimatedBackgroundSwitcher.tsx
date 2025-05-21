@@ -32,9 +32,9 @@ const LinkedInAnimatedBg: React.FC = () => (
             backgroundColor: `rgba(255, 255, 255, ${Math.random() * 0.15 + 0.08})`
           }}
           animate={{
-            x: [`${Math.random() * 100}vw`, `${Math.random() * 100}vw`],
-            y: [`${Math.random() * 100}vh`, `${Math.random() * 100}vh`],
-            scale: [null, Math.random() * 1.0 + 0.8, null],
+            x: `${Math.random() * 100}vw`,
+            y: `${Math.random() * 100}vh`,
+            scale: Math.random() * 1.0 + 0.8,
           }}
           transition={{
             duration: Math.random() * 30 + 25,

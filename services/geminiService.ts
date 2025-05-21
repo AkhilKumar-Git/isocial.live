@@ -1,5 +1,5 @@
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
-import { Platform, PostType, ContentInput, GeneratedContentWithMetadata, GroundingMetadata } from '../types';
+import { Platform, ContentInput, GeneratedContentWithMetadata, GroundingMetadata } from '../types';
 import { GEMINI_TEXT_MODEL } from '../constants';
 
 const API_KEY = process.env.API_KEY;

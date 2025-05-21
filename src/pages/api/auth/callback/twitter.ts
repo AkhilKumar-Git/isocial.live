@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const { code, state, error, error_description } = req.query;
+    const { code, error, error_description } = req.query;
     
     if (error) {
       console.error('Twitter OAuth error:', error, error_description);

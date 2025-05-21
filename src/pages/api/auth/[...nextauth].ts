@@ -1,6 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth from 'next-auth';
-import { OAuthConfig } from 'next-auth/providers';
+
+// Extend the Session type to include accessToken
+declare module 'next-auth' {
+  interface Session {
+    accessToken?: string;
+  }
+  interface JWT {
+    accessToken?: string;
+  }
+}
 
 // This is a basic setup that you'll need to expand based on your requirements
 export default async function auth(req: NextApiRequest, res: NextApiResponse) {
@@ -32,13 +41,15 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
     ],
     callbacks: {
       async jwt({ token, account }) {
-        if (account) {
-          token.accessToken = account.access_token;
+        if (account?.access_token) {
+          token.accessToken = account.access_token as string;
         }
         return token;
       },
       async session({ session, token }) {
-        session.accessToken = token.accessToken;
+        if (token.accessToken) {
+          session.accessToken = token.accessToken as string;
+        }
         return session;
       },
     },

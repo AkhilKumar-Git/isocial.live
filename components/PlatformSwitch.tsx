@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Platform, PlatformConfig } from '../types';
+import { Platform } from '../types';
 import { PLATFORM_CONFIGS } from '../constants';
 
 interface PlatformSwitchProps {

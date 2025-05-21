@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Modal from './Modal';
-import { LinkedInIcon, XIcon, InstagramIcon, PLATFORM_CONFIGS } from '../constants';
+import { PLATFORM_CONFIGS } from '../constants';
 import LoadingSpinner from './LoadingSpinner';
 import { Platform } from '../types';
 
@@ -45,7 +45,6 @@ const ConnectAccountsModal: React.FC<ConnectAccountsModalProps> = ({ isOpen, onC
   };
   
   const modalBg = isDarkMode ? 'bg-neutral-800 text-neutral-100' : 'bg-white text-gray-800';
-  const inputBg = isDarkMode ? 'bg-neutral-700 border-neutral-600 text-white' : 'bg-gray-100 border-gray-300';
   const buttonPrimaryColor = isDarkMode ? 'bg-sky-600 hover:bg-sky-700' : 'bg-indigo-600 hover:bg-indigo-700';
   const buttonSecondaryColor = isDarkMode ? 'bg-neutral-600 hover:bg-neutral-500' : 'bg-gray-200 hover:bg-gray-300 text-gray-700';
 
